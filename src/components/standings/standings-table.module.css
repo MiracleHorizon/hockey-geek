@@ -1,0 +1,22 @@
+.title {
+  text-transform: capitalize;
+}
+
+.table :global(.mantine-Table-th),
+.table :global(.mantine-Table-td) {
+  font-size: 16px;
+}
+
+.table :global(.mantine-NavLink-label) {
+  font-size: 18px;
+}
+
+@media (hover: hover) {
+  .table :global(.mantine-NavLink-root:hover) {
+    background-color: transparent;
+  }
+
+  .table :global(.mantine-NavLink-label:hover) {
+    text-decoration: underline;
+  }
+}
