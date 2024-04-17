@@ -11,5 +11,5 @@ export const Team = z.object({
   shortDisplayName: z.string(),
   color: z.string(),
   alternateColor: z.string(),
-  standingSummary: z.string(),
+  standingSummary: z.string()
 })

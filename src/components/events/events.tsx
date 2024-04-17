@@ -13,7 +13,7 @@ export function Events() {
 
   return (
     <ScrollArea scrollbars='x' w='100%'>
-      <Flex align='center' pb='16px' columnGap='md' w='100%'>
+      <Flex align='center' pb='24px' columnGap='md' w='100%'>
         {isLoading && <Skeleton />}
         {scoreboard &&
           scoreboard.events.map(event => (

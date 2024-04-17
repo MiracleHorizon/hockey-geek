@@ -1,43 +1,21 @@
-import { Badge, Card, Flex, Text } from '@mantine/core'
+import { Badge, Card, Flex, Text, Tooltip } from '@mantine/core'
 import type { FC } from 'react'
 
-import { getTeamLogoImage } from '@/utility/getTeamLogoImage'
-import type { CompetitorType, EventTeamType, EventType } from '@/schemas/scoreboard.scheme'
+import { TeamLogo } from '@/components/team-logo'
+import { getEventLinescores } from '@/utility/getEventLinescores'
+import type { EventTeamType, EventType } from '@/schemas/scoreboard.scheme'
 
-const TeamLogo: FC<EventTeamType> = ({ logo, abbreviation }) => (
+export const Logo: FC<EventTeamType> = ({ logo, abbreviation, displayName }) => (
   <Flex align='center' direction='column' rowGap='6px'>
-    <img
-      width='50'
-      height='50'
-      src={getTeamLogoImage({
-        href: logo,
-        size: 100
-      })}
-      alt={abbreviation}
-    />
+    <TeamLogo logo={logo} size={50} alt={abbreviation} />
 
-    <Badge color='gray' size='lg' radius='sm'>
-      {abbreviation}
-    </Badge>
+    <Tooltip label={displayName} openDelay={600} withArrow arrowSize={6} position='bottom'>
+      <Badge color='gray' size='lg' radius='sm'>
+        {abbreviation}
+      </Badge>
+    </Tooltip>
   </Flex>
 )
-
-const getLinescores = (competitorA: CompetitorType, competitorB: CompetitorType) => {
-  const LINESCORES_FALLBACK = [0, 0, 0]
-
-  const handleLinescores = (linescores: CompetitorType['linescores']) => {
-    if (!linescores) {
-      return LINESCORES_FALLBACK
-    }
-
-    return linescores.map(score => score.value)
-  }
-
-  const linescoresA = handleLinescores(competitorA.linescores)
-  const linescoresB = handleLinescores(competitorB.linescores)
-
-  return `${linescoresA[0]}:${linescoresB[0]}  ${linescoresA[1]}:${linescoresB[1]}  ${linescoresA[2]}:${linescoresB[2]}`
-}
 
 export default function EventCard({ competitions, status }: EventType) {
   const { completed, shortDetail, state } = status.type
@@ -52,7 +30,7 @@ export default function EventCard({ competitions, status }: EventType) {
     <Card w='260px' h='145px' radius='md' withBorder>
       <Flex align='center' justify='center' direction='column' w='100%'>
         <Flex align='center' justify='space-between' w='100%'>
-          <TeamLogo {...teamA} />
+          <Logo {...teamA} />
 
           <Flex align='center' direction='column'>
             {state === 'in' && (
@@ -71,14 +49,12 @@ export default function EventCard({ competitions, status }: EventType) {
             </Text>
           </Flex>
 
-          <TeamLogo {...teamB} />
+          <Logo {...teamB} />
         </Flex>
 
-        {completed ? (
-          <Text fz='15px'>{getLinescores(competitorA, competitorB)}</Text>
-        ) : (
-          <div>{shortDetail}</div>
-        )}
+        <Text fz='15px' mt='6px'>
+          {completed ? getEventLinescores(competitorA, competitorB) : shortDetail}
+        </Text>
       </Flex>
     </Card>
   )
