@@ -5,9 +5,25 @@ import type { TeamSchedule } from '@/schemas/team-schedule.scheme'
 
 export const TEAM_SCHEDULE_QUERY_KEY = 'team-schedule'
 
-export async function getTeamSchedule(teamId: string): Promise<TeamSchedule> {
+/* eslint no-unused-vars: 0 */
+export enum SEASON_TYPE {
+  PRE_SEASON = '1',
+  REGULAR_SEASON = '2',
+  POST_SEASON = '3'
+}
+
+export async function getTeamSchedule({
+  teamId,
+  seasonType
+}: {
+  teamId: string
+  seasonType?: SEASON_TYPE
+}): Promise<TeamSchedule> {
   const url = `${ESPN_API_URL}/${TEAMS_ENDPOINT}/${teamId}/schedule`
-  const res = await fetch(url, {
+  const searchParams = new URLSearchParams({
+    seasontype: seasonType ?? SEASON_TYPE.REGULAR_SEASON
+  })
+  const res = await fetch(url + '?' + searchParams, {
     signal: AbortSignal.timeout(ABORT_TIMEOUT)
   })
 
@@ -18,10 +34,20 @@ export async function getTeamSchedule(teamId: string): Promise<TeamSchedule> {
   return res.json()
 }
 
-export const useGetTeamSchedule = (teamId?: string) =>
+export const useGetTeamSchedule = ({
+  teamId,
+  seasonType
+}: {
+  teamId: string | undefined
+  seasonType?: SEASON_TYPE
+}) =>
   useQuery({
-    queryKey: [TEAM_SCHEDULE_QUERY_KEY, teamId],
-    queryFn: () => getTeamSchedule(teamId!),
+    queryKey: [TEAM_SCHEDULE_QUERY_KEY, teamId, seasonType],
+    queryFn: () =>
+      getTeamSchedule({
+        teamId: teamId!,
+        seasonType
+      }),
     enabled: typeof teamId === 'string',
     refetchOnMount: false
   })

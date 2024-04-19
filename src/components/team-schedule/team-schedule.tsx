@@ -1,8 +1,10 @@
 import { lazy, Suspense, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { Flex, Skeleton, Title } from '@mantine/core'
 
-import { useGetTeamSchedule } from '@/api/get-team-schedule'
+import { TeamScheduleSelect } from './team-schedule-select'
+import { useGetTeamSchedule, SEASON_TYPE } from '@/api/get-team-schedule'
+import { SEASON_TYPE_SEARCH } from './constants'
 import styles from './team-schedule.module.css'
 
 const TeamScheduleList = lazy(() => import('./team-schedule-list'))
@@ -16,16 +18,25 @@ const ScheduleSkeleton = () => (
 )
 
 export function TeamSchedule() {
-  const params = useParams()
-  const { data, isLoading } = useGetTeamSchedule(params?.teamId)
-
   const eventsScrollRef = useRef<HTMLDivElement>(null)
+
+  const params = useParams()
+  const [searchParams] = useSearchParams()
+  const seasonType = searchParams.get(SEASON_TYPE_SEARCH) ?? SEASON_TYPE.REGULAR_SEASON
+  const { data, isLoading } = useGetTeamSchedule({
+    teamId: params?.teamId,
+    seasonType: seasonType as SEASON_TYPE
+  })
 
   return (
     <Flex direction='column' w='100%'>
-      <Title component='h2' mb='12px' size='32px'>
-        Schedule
-      </Title>
+      <Flex mb='12px' rowGap='12px' direction='column'>
+        <Title component='h2' size='32px'>
+          Schedule
+        </Title>
+
+        <TeamScheduleSelect value={seasonType} />
+      </Flex>
 
       <div ref={eventsScrollRef} className={styles.scrollContainer}>
         {data && (

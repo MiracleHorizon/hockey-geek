@@ -49,6 +49,11 @@ const EventSchema = z.object({
 })
 
 const TeamScheduleSchema = z.object({
+  season: z.object({
+    type: z.number().int().max(3).min(1),
+    year: z.number(),
+    name: z.enum(['Preseason', 'Regular', 'Postseason']),
+  }),
   team: z.object({
     id: z.string(),
     location: z.string(),
