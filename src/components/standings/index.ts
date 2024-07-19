@@ -1,1 +1,0 @@
-export { Standings } from './standings'

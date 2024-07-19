@@ -1,13 +1,19 @@
-import { type FC, memo } from 'react'
+import { memo } from 'react'
 
 import { useDarkTheme } from '@/lib/mantine/useDarkTheme'
 import { getTeamLogoImage } from '@/utility/getTeamLogoImage'
 
+interface Props {
+  href?: string
+  size?: number
+  alt?: string
+}
+
 // TODO: Logo fallback
-export const TeamLogo: FC<Props> = memo(({ size = 50, logo, alt = 'Team logo' }) => {
+export const TeamLogo = memo(({ href, alt = 'Team logo', size = 50 }: Props) => {
   const { isDarkTheme } = useDarkTheme()
 
-  if (!logo) {
+  if (!href) {
     return null
   }
 
@@ -16,7 +22,7 @@ export const TeamLogo: FC<Props> = memo(({ size = 50, logo, alt = 'Team logo' })
       width={size}
       height={size}
       src={getTeamLogoImage({
-        href: logo,
+        href,
         size: size + 20,
         dark: isDarkTheme
       })}
@@ -24,9 +30,3 @@ export const TeamLogo: FC<Props> = memo(({ size = 50, logo, alt = 'Team logo' })
     />
   )
 })
-
-interface Props {
-  logo?: string
-  size?: number
-  alt?: string
-}

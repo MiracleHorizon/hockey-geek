@@ -1,13 +1,13 @@
 import { useMemo } from 'react'
 import { Tabs } from '@mantine/core'
 
-import { StandingsTable } from './standings-table'
-import { StandingsTableSkeleton } from './standings-table-skeleton'
+import { StandingsTable } from './StandingsTable'
+import { StandingsTableSkeleton } from './StandingsTable/StandingsTableSkeleton'
 import { useGetStandingsLeague } from '@/api/get-standings-league'
 import { getTableDataBody } from './utils'
-import { tableHead } from './constants'
+import { tableHeadColumns } from './constants'
 
-export function StandingsLeague() {
+export const StandingsLeague = () => {
   const { data, isLoading } = useGetStandingsLeague()
 
   const table = useMemo(() => {
@@ -18,7 +18,7 @@ export function StandingsLeague() {
     return {
       title: 'National Hockey League',
       data: {
-        head: tableHead,
+        head: tableHeadColumns,
         body: getTableDataBody(data.standings)
       }
     }

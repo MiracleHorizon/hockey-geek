@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import { Flex, Title } from '@mantine/core'
-import type { FC, PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
-import { Events } from '@/components/events'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { Events } from '@/components/Events'
+import { ThemeToggle } from '@/components/ThemeToggle'
 import { PATH_ROOT } from '@/site/paths'
 import styles from './default.module.css'
 
@@ -36,7 +36,7 @@ const Header = () => {
   )
 }
 
-export const DefaultLayout: FC<PropsWithChildren> = ({ children }) => (
+export const DefaultLayout = ({ children }: PropsWithChildren) => (
   <Flex direction='column' w='100dwv'>
     <Header />
 

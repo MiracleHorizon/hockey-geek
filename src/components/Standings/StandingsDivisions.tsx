@@ -1,19 +1,19 @@
 import { useMemo } from 'react'
 import { Flex, Title } from '@mantine/core'
 
-import { Standings } from './standings'
-import { StandingsTable } from './standings-table'
-import { StandingsTableSkeleton } from './standings-table-skeleton'
+import { Standings } from './Standings'
+import { StandingsTable } from './StandingsTable'
+import { StandingsTableSkeleton } from './StandingsTable/StandingsTableSkeleton'
 import { useGetStandingsDivisions } from '@/api/get-standings-divisions'
 import { getTableDataBody } from './utils'
-import { tableHead } from './constants'
+import { tableHeadColumns } from './constants'
 
 const formatDivisionTitle = (title: string) =>
   title.toLowerCase().replace('division', '').trim().toUpperCase()
 const getDivisionTableHead = (title: string) =>
-  [formatDivisionTitle(title)].concat(tableHead.slice(1, tableHead.length))
+  [formatDivisionTitle(title)].concat(tableHeadColumns.slice(1, tableHeadColumns.length))
 
-export function StandingsDivisions() {
+export const StandingsDivisions = () => {
   const { data, isLoading } = useGetStandingsDivisions()
 
   const conferences = useMemo(() => {

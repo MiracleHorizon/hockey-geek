@@ -1,3 +1,3 @@
-import { StandingsDivisions } from '@/components/standings/standings-divisions'
+import { StandingsDivisions } from '@/components/Standings'
 
 export const DivisionsPage = () => <StandingsDivisions />

@@ -1,9 +1,13 @@
 import { forwardRef, type MutableRefObject } from 'react'
 import { useVirtualizer } from '@tanstack/react-virtual'
 
-import { TeamScheduleCompetition } from './team-schedule-competition'
+import { TeamScheduleCompetition } from './TeamScheduleCompetition'
 import type { TeamScheduleEvent } from '@/schemas/team-schedule.scheme'
-import styles from './team-schedule-list.module.css'
+import styles from './TeamScheduleList.module.css'
+
+interface Props {
+  events: TeamScheduleEvent[]
+}
 
 const TeamScheduleList = forwardRef<HTMLDivElement, Props>(({ events }, scrollRef) => {
   const rowVirtualizer = useVirtualizer({
@@ -39,9 +43,5 @@ const TeamScheduleList = forwardRef<HTMLDivElement, Props>(({ events }, scrollRe
 })
 
 TeamScheduleList.displayName = 'TeamScheduleList'
-
-interface Props {
-  events: TeamScheduleEvent[]
-}
 
 export default TeamScheduleList

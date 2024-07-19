@@ -1,11 +1,11 @@
 import type { EventCompetitorType } from '@/schemas/event.scheme'
 
+const LINESCORES_FALLBACK = [0, 0, 0] as const
+
 export const getEventLinescores = (
   competitorA: EventCompetitorType,
   competitorB: EventCompetitorType
 ): string => {
-  const LINESCORES_FALLBACK = [0, 0, 0] as const
-
   const handleLinescores = (linescores: EventCompetitorType['linescores']) => {
     if (!linescores) {
       return LINESCORES_FALLBACK

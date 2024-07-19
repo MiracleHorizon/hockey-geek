@@ -2,12 +2,12 @@ import { lazy, Suspense, useRef } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { Flex, Skeleton, Title } from '@mantine/core'
 
-import { TeamScheduleSelect } from './team-schedule-select'
+import { TeamScheduleSelect } from './TeamScheduleSelect'
 import { useGetTeamSchedule, SEASON_TYPE } from '@/api/get-team-schedule'
 import { SEASON_TYPE_SEARCH } from './constants'
-import styles from './team-schedule.module.css'
+import styles from './TeamSchedule.module.css'
 
-const TeamScheduleList = lazy(() => import('./team-schedule-list'))
+const TeamScheduleList = lazy(() => import('./TeamScheduleList'))
 
 const ScheduleSkeleton = () => (
   <Flex direction='column' rowGap='10px' w='100%'>
@@ -17,7 +17,7 @@ const ScheduleSkeleton = () => (
   </Flex>
 )
 
-export function TeamSchedule() {
+export const TeamSchedule = () => {
   const eventsScrollRef = useRef<HTMLDivElement>(null)
 
   const params = useParams()

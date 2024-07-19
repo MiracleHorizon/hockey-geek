@@ -1,9 +1,13 @@
 import { Flex, Table, type TableData, Title } from '@mantine/core'
-import type { FC } from 'react'
 
-import styles from './standings-table.module.css'
+import styles from './StandingsTable.module.css'
 
-export const StandingsTable: FC<Props> = ({ title, data }) => (
+interface Props {
+  data: TableData
+  title?: string
+}
+
+export const StandingsTable = ({ title, data }: Props) => (
   <Flex direction='column' className={styles.root}>
     {title && (
       <Title component='h3' size='24px' tt='capitalize' mb='10px' className={styles.title}>
@@ -16,8 +20,3 @@ export const StandingsTable: FC<Props> = ({ title, data }) => (
     </Table.ScrollContainer>
   </Flex>
 )
-
-interface Props {
-  data: TableData
-  title?: string
-}

@@ -1,21 +1,21 @@
-import { type FC, memo } from 'react'
+import { memo } from 'react'
 import { Card, Flex, Text } from '@mantine/core'
 import MediaQuery from 'react-responsive'
 import dayjs from 'dayjs'
 import type { VirtualItem } from '@tanstack/react-virtual'
 
-import { TeamLogo } from '@/components/team-logo'
+import { TeamLogo } from '@/components/TeamLogo'
 import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@/lib/react-responsive/breakpoints'
 import type {
   TeamScheduleCompetition as Competition,
   TeamScheduleTeam
 } from '@/schemas/team-schedule.scheme'
 
-const Logo: FC<
-  TeamScheduleTeam & {
-    side: 'left' | 'right'
-  }
-> = ({ logos = [], abbreviation, displayName, side }) => (
+type LogoProps = TeamScheduleTeam & {
+  side: 'left' | 'right'
+}
+
+const Logo = ({ logos = [], abbreviation, displayName, side }: LogoProps) => (
   <Flex
     pos='absolute'
     align='center'
@@ -25,10 +25,10 @@ const Logo: FC<
     right={side === 'right' ? '10px' : undefined}
   >
     <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.sm}>
-      <TeamLogo size={80} logo={logos[0]?.href} alt={abbreviation} />
+      <TeamLogo size={80} href={logos[0]?.href} alt={abbreviation} />
     </MediaQuery>
     <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.sm}>
-      <TeamLogo size={60} logo={logos[0]?.href} alt={abbreviation} />
+      <TeamLogo size={60} href={logos[0]?.href} alt={abbreviation} />
     </MediaQuery>
 
     <Text fz='24px' span>
@@ -43,8 +43,8 @@ interface Props {
   competition: Competition
 }
 
-export const TeamScheduleCompetition: FC<Props> = memo(
-  ({ virtualItem, competition: { date, competitors } }) => {
+export const TeamScheduleCompetition = memo(
+  ({ virtualItem, competition: { date, competitors } }: Props) => {
     const competitorA = competitors[0]
     const competitorB = competitors[1]
     const teamA = competitorA.team

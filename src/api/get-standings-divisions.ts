@@ -35,9 +35,10 @@ export async function getStandingsDivisions(): Promise<StandingDivisionsType> {
   return res.json()
 }
 
-export const useGetStandingsDivisions = () => useQuery({
-  queryKey: [STANDINGS_DIVISIONS_QUERY_KEY],
-  queryFn: getStandingsDivisions,
-  refetchInterval: 6 * 60 * 60 * 1000,
-  refetchOnMount: false
-})
+export const useGetStandingsDivisions = () =>
+  useQuery({
+    queryKey: [STANDINGS_DIVISIONS_QUERY_KEY],
+    queryFn: getStandingsDivisions,
+    refetchInterval: 6 * 60 * 60 * 1000,
+    refetchOnMount: false
+  })

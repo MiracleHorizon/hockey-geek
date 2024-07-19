@@ -18,8 +18,9 @@ export async function getScoreboard(): Promise<ScoreboardType> {
   return res.json()
 }
 
-export const useGetScoreboard = () => useQuery({
-  queryKey: [SCOREBOARD_QUERY_KEY],
-  queryFn: getScoreboard,
-  refetchInterval: 5 * 60 * 1000
-})
+export const useGetScoreboard = () =>
+  useQuery({
+    queryKey: [SCOREBOARD_QUERY_KEY],
+    queryFn: getScoreboard,
+    refetchInterval: 5 * 60 * 1000
+  })

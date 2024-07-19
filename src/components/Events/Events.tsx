@@ -1,14 +1,14 @@
 import { lazy, Suspense } from 'react'
 import { Flex, ScrollArea } from '@mantine/core'
 
-import { EventCardSkeleton } from './event-card-skeleton'
+import { EventCardSkeleton } from './EventCard/EventCardSkeleton'
 import { useGetScoreboard } from '@/api/get-scoreboard'
 
-const EventCard = lazy(() => import('./event-card'))
+const EventCard = lazy(() => import('./EventCard'))
 
 const Skeleton = () => new Array(6).fill('').map((_, index) => <EventCardSkeleton key={index} />)
 
-export function Events() {
+export const Events = () => {
   const { data: scoreboard, isLoading } = useGetScoreboard()
 
   return (

@@ -1,11 +1,9 @@
 import { Flex } from '@mantine/core'
 
-import { Team } from '@/components/team'
+import { Team } from '@/components/Team'
 
-export function TeamPage() {
-  return (
-    <Flex align='center' justify='center' direction='column' w='100%'>
-      <Team />
-    </Flex>
-  )
-}
+export const TeamPage = () => (
+  <Flex align='center' justify='center' direction='column' w='100%'>
+    <Team />
+  </Flex>
+)

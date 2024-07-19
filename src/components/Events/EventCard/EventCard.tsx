@@ -1,13 +1,12 @@
 import { Badge, Card, Flex, Text, Tooltip } from '@mantine/core'
-import type { FC } from 'react'
 
-import { TeamLogo } from '@/components/team-logo'
+import { TeamLogo } from '@/components/TeamLogo'
 import { getEventLinescores } from '@/utility/getEventLinescores'
 import type { EventTeamType, EventType } from '@/schemas/scoreboard.scheme'
 
-export const Logo: FC<EventTeamType> = ({ logo, abbreviation, displayName }) => (
+export const Logo = ({ logo, abbreviation, displayName }: EventTeamType) => (
   <Flex align='center' direction='column' rowGap='6px'>
-    <TeamLogo logo={logo} size={50} alt={abbreviation} />
+    <TeamLogo href={logo} size={50} alt={abbreviation} />
 
     <Tooltip label={displayName} openDelay={600} withArrow arrowSize={6} position='bottom'>
       <Badge color='gray' size='lg' radius='sm'>
@@ -17,7 +16,7 @@ export const Logo: FC<EventTeamType> = ({ logo, abbreviation, displayName }) => 
   </Flex>
 )
 
-export default function EventCard({ competitions, status }: EventType) {
+const EventCard = ({ competitions, status }: EventType) => {
   const { completed, shortDetail, state } = status.type
   const competitors = competitions[0].competitors
 
@@ -59,3 +58,5 @@ export default function EventCard({ competitions, status }: EventType) {
     </Card>
   )
 }
+
+export default EventCard

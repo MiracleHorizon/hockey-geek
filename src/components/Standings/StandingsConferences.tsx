@@ -1,14 +1,14 @@
 import { useMemo } from 'react'
 import { Flex } from '@mantine/core'
 
-import { Standings } from './standings'
-import { StandingsTable } from './standings-table'
-import { StandingsTableSkeleton } from './standings-table-skeleton'
+import { Standings } from './Standings'
+import { StandingsTable } from './StandingsTable'
+import { StandingsTableSkeleton } from './StandingsTable/StandingsTableSkeleton'
 import { useGetStandingsConferences } from '@/api/get-standings-conferences'
 import { getTableDataBody } from './utils'
-import { tableHead } from './constants'
+import { tableHeadColumns } from './constants'
 
-export function StandingsConferences() {
+export const StandingsConferences = () => {
   const { data, isLoading } = useGetStandingsConferences()
 
   const tables = useMemo(() => {
@@ -19,7 +19,7 @@ export function StandingsConferences() {
     return data.children.map(({ abbreviation: title, standings }) => ({
       title: `${title} Conference`,
       data: {
-        head: tableHead,
+        head: tableHeadColumns,
         body: getTableDataBody(standings)
       }
     }))

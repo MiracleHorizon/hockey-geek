@@ -6,7 +6,7 @@ import { PATH_CONFERENCES, PATH_DIVISIONS, PATH_ROOT } from '@/site/paths'
 
 const pathToValue = (path: string) => path.replace('/', '').trim()
 
-export function Standings({ children }: PropsWithChildren) {
+export const Standings = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
 

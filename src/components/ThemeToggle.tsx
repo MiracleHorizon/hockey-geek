@@ -1,6 +1,6 @@
 import { ActionIcon, useComputedColorScheme, useMantineColorScheme } from '@mantine/core'
 
-export function ThemeToggle() {
+export const ThemeToggle = () => {
   const { toggleColorScheme } = useMantineColorScheme()
   const colorScheme = useComputedColorScheme('dark')
 

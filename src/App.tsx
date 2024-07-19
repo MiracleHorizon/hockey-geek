@@ -5,12 +5,10 @@ import { MantineProvider } from '@/lib/mantine'
 import { ReactQueryProvider } from '@/lib/react-query'
 import { router } from '@/lib/react-router'
 
-export function App() {
-  return (
-    <MantineProvider>
-      <ReactQueryProvider>
-        <RouterProvider router={router} />
-      </ReactQueryProvider>
-    </MantineProvider>
-  )
-}
+export const App = () => (
+  <MantineProvider>
+    <ReactQueryProvider>
+      <RouterProvider router={router} />
+    </ReactQueryProvider>
+  </MantineProvider>
+)

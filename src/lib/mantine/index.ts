@@ -1,1 +1,1 @@
-export { MantineProvider } from './mantine-provider'
+export { MantineProvider } from './MantineProvider'

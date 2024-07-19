@@ -4,6 +4,10 @@ import { useSearchParams } from 'react-router-dom'
 import { SEASON_TYPE } from '@/api/get-team-schedule'
 import { SEASON_TYPE_SEARCH } from './constants'
 
+interface Props {
+  value: string
+}
+
 const data = [
   {
     value: SEASON_TYPE.PRE_SEASON,
@@ -19,7 +23,7 @@ const data = [
   }
 ]
 
-export function TeamScheduleSelect({ value }: Props) {
+export const TeamScheduleSelect = ({ value }: Props) => {
   const [, setSearchParams] = useSearchParams()
 
   const onChange = (value: string | null) => {
@@ -30,8 +34,4 @@ export function TeamScheduleSelect({ value }: Props) {
   return (
     <Select w='180px' checkIconPosition='right' data={data} value={value} onChange={onChange} />
   )
-}
-
-interface Props {
-  value: string
 }

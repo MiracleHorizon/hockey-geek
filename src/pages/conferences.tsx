@@ -1,3 +1,3 @@
-import { StandingsConferences } from '@/components/standings/standings-conferences'
+import { StandingsConferences } from '@/components/Standings'
 
 export const ConferencesPage = () => <StandingsConferences />

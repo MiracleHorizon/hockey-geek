@@ -1,11 +1,11 @@
 import { MantineProvider, type MantineTheme } from '@mantine/core'
-import type { FC, PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 
 const theme: Partial<MantineTheme> = {
   primaryColor: 'blue'
 }
 
-const CustomMantineProvider: FC<PropsWithChildren> = ({ children }) => (
+const CustomMantineProvider = ({ children }: PropsWithChildren) => (
   <MantineProvider defaultColorScheme='dark' theme={theme}>
     {children}
   </MantineProvider>

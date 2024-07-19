@@ -35,9 +35,10 @@ export async function getStandingsLeague(): Promise<StandingLeagueType> {
   return res.json()
 }
 
-export const useGetStandingsLeague = () => useQuery({
-  queryKey: [STANDINGS_LEAGUE_QUERY_KEY],
-  queryFn: getStandingsLeague,
-  refetchInterval: 6 * 60 * 60 * 1000,
-  refetchOnMount: false
-})
+export const useGetStandingsLeague = () =>
+  useQuery({
+    queryKey: [STANDINGS_LEAGUE_QUERY_KEY],
+    queryFn: getStandingsLeague,
+    refetchInterval: 6 * 60 * 60 * 1000,
+    refetchOnMount: false
+  })

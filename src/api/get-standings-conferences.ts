@@ -27,9 +27,10 @@ export async function getStandingsConferences(): Promise<StandingConferencesType
   return res.json()
 }
 
-export const useGetStandingsConferences = () => useQuery({
-  queryKey: [STANDINGS_CONFERENCES_QUERY_KEY],
-  queryFn: getStandingsConferences,
-  refetchInterval: 6 * 60 * 60 * 1000,
-  refetchOnMount: false
-})
+export const useGetStandingsConferences = () =>
+  useQuery({
+    queryKey: [STANDINGS_CONFERENCES_QUERY_KEY],
+    queryFn: getStandingsConferences,
+    refetchInterval: 6 * 60 * 60 * 1000,
+    refetchOnMount: false
+  })
