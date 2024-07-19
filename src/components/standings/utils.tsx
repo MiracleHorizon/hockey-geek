@@ -16,11 +16,12 @@ export const getTableDataBody = (standings: StandingsType): TableData['body'] =>
     const points = stats.find(({ name }) => name === 'points')?.value
     const pointsDiff = stats.find(({ name }) => name === 'pointsDiff')?.value
     const streak = stats.find(({ name }) => name === 'streak')?.displayValue
+    const logos = team.logos ?? []
 
     return [
       <Flex align='center' key={team.id + '_logo'} columnGap='10px'>
         <Text>{index + 1}.</Text>
-        <TeamLogo size={36} logo={team.logos[0]?.href} alt={team.abbreviation} />
+        <TeamLogo size={36} logo={logos[0]?.href} alt={team.abbreviation} />
         <MantineLink component={Link} to={`${PATH_TEAM}/${team.id}`} label={team.displayName} />
       </Flex>,
       points,

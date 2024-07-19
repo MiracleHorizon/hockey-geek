@@ -15,13 +15,15 @@ export const Team = z.object({
   isActive: z.boolean(),
   isAllStar: z.boolean(),
   logos: z.array(
-    z.object({
-      href: z.string(),
-      width: z.number(),
-      height: z.number(),
-      alt: z.string(),
-      rel: z.tuple([z.string(), z.string()])
-    })
+    z
+      .object({
+        href: z.string(),
+        width: z.number(),
+        height: z.number(),
+        alt: z.string(),
+        rel: z.tuple([z.string(), z.string()])
+      })
+      .optional()
   ),
   links: z.array(
     z.object({

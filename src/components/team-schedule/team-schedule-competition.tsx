@@ -15,7 +15,7 @@ const Logo: FC<
   TeamScheduleTeam & {
     side: 'left' | 'right'
   }
-> = ({ logos, abbreviation, displayName, side }) => (
+> = ({ logos = [], abbreviation, displayName, side }) => (
   <Flex
     pos='absolute'
     align='center'
@@ -37,6 +37,11 @@ const Logo: FC<
     </Text>
   </Flex>
 )
+
+interface Props {
+  virtualItem: VirtualItem
+  competition: Competition
+}
 
 export const TeamScheduleCompetition: FC<Props> = memo(
   ({ virtualItem, competition: { date, competitors } }) => {
@@ -119,8 +124,3 @@ export const TeamScheduleCompetition: FC<Props> = memo(
 )
 
 TeamScheduleCompetition.displayName = 'TeamScheduleCompetition'
-
-interface Props {
-  virtualItem: VirtualItem
-  competition: Competition
-}

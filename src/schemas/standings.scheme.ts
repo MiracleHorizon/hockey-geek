@@ -14,15 +14,17 @@ export const Standings = z.object({
         abbreviation: z.string(),
         displayName: z.string(),
         shortDisplayName: z.string(),
-        logos: z.array(
-          z.object({
-            href: z.string(),
-            width: z.number(),
-            height: z.number(),
-            alt: z.string(),
-            rel: z.tuple([z.string(), z.string()])
-          })
-        )
+        logos: z
+          .array(
+            z.object({
+              href: z.string(),
+              width: z.number(),
+              height: z.number(),
+              alt: z.string(),
+              rel: z.tuple([z.string(), z.string()])
+            })
+          )
+          .optional()
       }),
       stats: z.array(
         z.object({

@@ -27,14 +27,16 @@ const EventSchema = z.object({
             location: z.string(),
             displayName: z.string(),
             abbreviation: z.string(),
-            logos: z.array(
-              z.object({
-                href: z.string(),
-                width: z.number(),
-                height: z.number(),
-                rel: z.array(z.string())
-              })
-            )
+            logos: z
+              .array(
+                z.object({
+                  href: z.string(),
+                  width: z.number(),
+                  height: z.number(),
+                  rel: z.array(z.string())
+                })
+              )
+              .optional()
           }),
           score: z
             .object({
@@ -52,7 +54,7 @@ const TeamScheduleSchema = z.object({
   season: z.object({
     type: z.number().int().max(3).min(1),
     year: z.number(),
-    name: z.enum(['Preseason', 'Regular', 'Postseason']),
+    name: z.enum(['Preseason', 'Regular', 'Postseason'])
   }),
   team: z.object({
     id: z.string(),

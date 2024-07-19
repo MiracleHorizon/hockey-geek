@@ -7,6 +7,10 @@ import { getTeamLogoImage } from '@/utility/getTeamLogoImage'
 export const TeamLogo: FC<Props> = memo(({ size = 50, logo, alt = 'Team logo' }) => {
   const { isDarkTheme } = useDarkTheme()
 
+  if (!logo) {
+    return null
+  }
+
   return (
     <img
       width={size}
@@ -22,7 +26,7 @@ export const TeamLogo: FC<Props> = memo(({ size = 50, logo, alt = 'Team logo' })
 })
 
 interface Props {
-  logo: string
+  logo?: string
   size?: number
   alt?: string
 }

@@ -13,7 +13,7 @@ export const Team = z.object({
   color: z.string(),
   alternateColor: z.string(),
   isActive: z.boolean(),
-  logo: z.string()
+  logo: z.string().optional()
 })
 
 export const Scoreboard = z.object({
