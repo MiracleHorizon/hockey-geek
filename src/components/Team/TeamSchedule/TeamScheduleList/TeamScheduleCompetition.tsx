@@ -1,42 +1,10 @@
 import { memo } from 'react'
 import { Card, Flex, Text } from '@mantine/core'
-import MediaQuery from 'react-responsive'
 import dayjs from 'dayjs'
 import type { VirtualItem } from '@tanstack/react-virtual'
 
-import { TeamLogo } from '@/components/TeamLogo'
-import { BREAKPOINTS_MAX_WIDTH, BREAKPOINTS_MIN_WIDTH } from '@/lib/react-responsive/breakpoints'
-import type {
-  TeamScheduleCompetition as Competition,
-  TeamScheduleTeam
-} from '@/schemas/team-schedule.scheme'
-
-type LogoProps = TeamScheduleTeam & {
-  side: 'left' | 'right'
-}
-
-const Logo = ({ logos = [], abbreviation, displayName, side }: LogoProps) => (
-  <Flex
-    pos='absolute'
-    align='center'
-    direction='column'
-    rowGap='md'
-    left={side === 'left' ? '10px' : undefined}
-    right={side === 'right' ? '10px' : undefined}
-  >
-    <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.sm}>
-      <TeamLogo size={80} href={logos[0]?.href} alt={abbreviation} />
-    </MediaQuery>
-    <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.sm}>
-      <TeamLogo size={60} href={logos[0]?.href} alt={abbreviation} />
-    </MediaQuery>
-
-    <Text fz='24px' span>
-      <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.sm}>{displayName}</MediaQuery>
-      <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.sm}>{abbreviation}</MediaQuery>
-    </Text>
-  </Flex>
-)
+import { TeamLogo } from './TeamLogo'
+import type { TeamScheduleCompetition as Competition } from '@/schemas/team-schedule.scheme'
 
 interface Props {
   virtualItem: VirtualItem
@@ -64,7 +32,7 @@ export const TeamScheduleCompetition = memo(
         }}
       >
         <Flex pos='relative' w='100%' h='100%' justify='space-between' align='center' px='md'>
-          <Logo {...teamA} side='left' />
+          <TeamLogo {...teamA} side='left' />
 
           <Flex align='center' mx='auto' direction='column' rowGap='6px'>
             <Flex align='center' direction='column' rowGap='4px'>
@@ -116,7 +84,7 @@ export const TeamScheduleCompetition = memo(
             </Flex>
           </Flex>
 
-          <Logo {...teamB} side='right' />
+          <TeamLogo {...teamB} side='right' />
         </Flex>
       </Card>
     )

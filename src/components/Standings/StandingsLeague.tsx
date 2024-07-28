@@ -4,7 +4,7 @@ import { Tabs } from '@mantine/core'
 import { StandingsTable } from './StandingsTable'
 import { StandingsTableSkeleton } from './StandingsTable/StandingsTableSkeleton'
 import { useGetStandingsLeague } from '@/api/get-standings-league'
-import { getTableDataBody } from './utils'
+import { getTableDataBody } from './utility'
 import { tableHeadColumns } from './constants'
 
 export const StandingsLeague = () => {

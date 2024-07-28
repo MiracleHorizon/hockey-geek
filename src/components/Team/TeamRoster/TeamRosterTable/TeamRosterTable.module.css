@@ -1,0 +1,8 @@
+.root :global(.mantine-Table-th),
+.root :global(.mantine-Table-td) {
+  font-size: 16px;
+}
+
+.root :global(.mantine-NavLink-label) {
+  font-size: 18px;
+}

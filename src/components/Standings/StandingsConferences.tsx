@@ -5,7 +5,7 @@ import { Standings } from './Standings'
 import { StandingsTable } from './StandingsTable'
 import { StandingsTableSkeleton } from './StandingsTable/StandingsTableSkeleton'
 import { useGetStandingsConferences } from '@/api/get-standings-conferences'
-import { getTableDataBody } from './utils'
+import { getTableDataBody } from './utility'
 import { tableHeadColumns } from './constants'
 
 export const StandingsConferences = () => {

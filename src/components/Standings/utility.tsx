@@ -1,7 +1,7 @@
 import { Flex, type TableData, NavLink as MantineLink, Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
-import { TeamLogo } from '@/components/TeamLogo'
+import { TeamLogoImage } from '@/components/TeamLogoImage'
 import { PATH_TEAM } from '@/site/paths'
 import type { StandingsType } from '@/schemas/standings.scheme'
 
@@ -21,7 +21,7 @@ export const getTableDataBody = (standings: StandingsType): TableData['body'] =>
     return [
       <Flex align='center' key={team.id + '_logo'} columnGap='10px'>
         <Text>{index + 1}.</Text>
-        <TeamLogo size={36} href={logos[0]?.href} alt={team.abbreviation} />
+        <TeamLogoImage size={36} href={logos[0]?.href} alt={team.abbreviation} />
         <MantineLink component={Link} to={`${PATH_TEAM}/${team.id}`} label={team.displayName} />
       </Flex>,
       points,

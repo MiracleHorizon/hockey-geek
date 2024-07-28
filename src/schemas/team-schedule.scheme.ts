@@ -1,5 +1,12 @@
 import { z } from 'zod'
 
+/* eslint no-unused-vars: 0 */
+export enum SEASON_TYPE {
+  PRE_SEASON = '1',
+  REGULAR_SEASON = '2',
+  POST_SEASON = '3'
+}
+
 const EventSchema = z.object({
   id: z.string(),
   date: z.string(),

@@ -1,8 +1,8 @@
 import { Select } from '@mantine/core'
 import { useSearchParams } from 'react-router-dom'
 
-import { SEASON_TYPE } from '@/api/get-team-schedule'
-import { SEASON_TYPE_SEARCH } from './constants'
+import { SEASON_TYPE } from '@/schemas/team-schedule.scheme'
+import { SEASON_TYPE_SEARCH } from '../constants'
 
 interface Props {
   value: string
@@ -21,7 +21,7 @@ const data = [
     value: SEASON_TYPE.POST_SEASON,
     label: 'Postseason'
   }
-]
+] as const
 
 export const TeamScheduleSelect = ({ value }: Props) => {
   const [, setSearchParams] = useSearchParams()
