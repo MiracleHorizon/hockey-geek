@@ -5,7 +5,7 @@ import type { PropsWithChildren } from 'react'
 import { Events } from '@/components/Events'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { PATH_ROOT } from '@/site/paths'
-import styles from './default.module.css'
+import styles from './DefaultLayout.module.css'
 
 const Header = () => {
   const navigate = useNavigate()

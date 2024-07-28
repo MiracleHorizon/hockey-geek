@@ -1,7 +1,7 @@
 import { memo } from 'react'
 
 import { useDarkTheme } from '@/lib/mantine/useDarkTheme'
-import { getTeamLogoImage } from '@/utility/getTeamLogoImage'
+import { getTeamLogoPath } from '@/utility/getTeamLogoPath'
 
 interface Props {
   href?: string
@@ -10,7 +10,7 @@ interface Props {
 }
 
 // TODO: Logo fallback
-export const TeamLogo = memo(({ href, alt = 'Team logo', size = 50 }: Props) => {
+export const TeamLogoImage = memo(({ href, alt = 'Team logo', size = 50 }: Props) => {
   const { isDarkTheme } = useDarkTheme()
 
   if (!href) {
@@ -21,7 +21,7 @@ export const TeamLogo = memo(({ href, alt = 'Team logo', size = 50 }: Props) => 
     <img
       width={size}
       height={size}
-      src={getTeamLogoImage({
+      src={getTeamLogoPath({
         href,
         size: size + 20,
         dark: isDarkTheme

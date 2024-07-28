@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { App } from './App'
+import './styles.css'
 
 const rootSelector = '#app-root'
 const rootEl = document.querySelector(rootSelector)!

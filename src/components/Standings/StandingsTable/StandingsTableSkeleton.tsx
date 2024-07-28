@@ -1,13 +1,13 @@
 import { Flex, Skeleton, Table } from '@mantine/core'
 
-import { getRandomValueFromRange } from '@/utility/getRandomValueFromRange'
+import { getRandomNumber } from '@/utility/getRandomNumber'
 import { tableHeadColumns } from '../constants'
 import styles from './StandingsTable.module.css'
 
 const TableRow = () => (
   <Table.Tr h='69px'>
     <Table.Th>
-      <Skeleton w={`${getRandomValueFromRange(170, 210)}px`} h='28px' />
+      <Skeleton w={`${getRandomNumber(170, 210)}px`} h='28px' />
     </Table.Th>
 
     {new Array(tableHeadColumns.length - 1).fill('').map((_, index) => (

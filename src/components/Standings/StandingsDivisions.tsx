@@ -5,7 +5,7 @@ import { Standings } from './Standings'
 import { StandingsTable } from './StandingsTable'
 import { StandingsTableSkeleton } from './StandingsTable/StandingsTableSkeleton'
 import { useGetStandingsDivisions } from '@/api/get-standings-divisions'
-import { getTableDataBody } from './utils'
+import { getTableDataBody } from './utility'
 import { tableHeadColumns } from './constants'
 
 const formatDivisionTitle = (title: string) =>
