@@ -1,0 +1,7 @@
+.root {
+  border-bottom: 1px solid var(--mantine-color-gray-7);
+}
+
+.title {
+  cursor: pointer;
+}
