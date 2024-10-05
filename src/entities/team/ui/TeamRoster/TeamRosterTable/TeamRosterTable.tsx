@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 import { Table, type TableData } from '@mantine/core'
 
 import { getTeamRosterTableBody } from './utility'
-import type { TeamRoster } from '@/old/schemas/team-roster.scheme'
+import type {TeamRoster} from '../../../model/team-roster.scheme'
 import styles from './TeamRosterTable.module.css'
 
-interface Props {
+type Props= {
   roster: TeamRoster
 }
 

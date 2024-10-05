@@ -1,4 +1,4 @@
-import type { EventCompetitorType } from '@/old/schemas/event.scheme'
+import type { EventCompetitorType } from '../model/event.scheme'
 
 const LINESCORES_FALLBACK = [0, 0, 0] as const
 

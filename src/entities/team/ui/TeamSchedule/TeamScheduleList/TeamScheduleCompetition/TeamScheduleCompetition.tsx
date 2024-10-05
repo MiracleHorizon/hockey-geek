@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import type { VirtualItem } from '@tanstack/react-virtual'
 
 import { TeamLogo } from '../TeamLogo/TeamLogo'
-import type { TeamScheduleCompetition as Competition } from '@/old/schemas/team-schedule.scheme'
+import type { TeamScheduleCompetition as Competition } from '../../../../model/team-schedule.scheme'
 
 type Props = {
   virtualItem: VirtualItem
