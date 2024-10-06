@@ -26,7 +26,7 @@ export const TeamLogo = ({ id, logos = [], abbreviation, displayName, position }
       <BaseLogo size={60} href={logos[0]?.href} alt={abbreviation} />
     </MediaQuery>
 
-    <Anchor fz='24px' c='var(--text-color)' href={`team/${id}`} component={Link}>
+    <Anchor fz='24px' c='var(--text-color)' href={`/team/${id}`} component={Link}>
       <MediaQuery minWidth={BREAKPOINTS_MIN_WIDTH.sm}>{displayName}</MediaQuery>
       <MediaQuery maxWidth={BREAKPOINTS_MAX_WIDTH.sm}>{abbreviation}</MediaQuery>
     </Anchor>

@@ -21,7 +21,7 @@ export const getTableDataBody = (standings: StandingsType): TableData['body'] =>
       <Flex align='center' key={team.id + '_logo'} columnGap='10px'>
         <Text>{index + 1}.</Text>
         <TeamLogo size={36} href={logos[0]?.href} alt={team.abbreviation} />
-        <MantineLink component={Link} href={`team/${team.id}`} label={team.displayName} />
+        <MantineLink component={Link} href={`/team/${team.id}`} label={team.displayName} />
       </Flex>,
       points,
       gamesPlayed,
