@@ -1,14 +1,14 @@
 import '@mantine/core/styles.css'
 
+import { ThemeProvider } from '@/entities/theme'
 import { RouterProvider } from '@/shared/lib/router'
-import { MantineProvider } from '@/shared/lib/mantine'
 import { ReactQueryProvider } from '@/shared/lib/react-query'
 import { createRouter } from './app-router'
 
 export const App = () => (
-  <MantineProvider>
+  <ThemeProvider>
     <ReactQueryProvider>
       <RouterProvider router={createRouter()} />
     </ReactQueryProvider>
-  </MantineProvider>
+  </ThemeProvider>
 )

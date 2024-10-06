@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { useDarkTheme } from '@/shared/lib/mantine'
+import { useDarkTheme } from '@/entities/theme'
 import { getTeamLogoPath } from '../../lib/getTeamLogoPath'
 
 type Props = {
