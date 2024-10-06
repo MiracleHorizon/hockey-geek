@@ -27,7 +27,7 @@ export const ConferencesStandings = () => {
     <Flex w='100%' direction='column' rowGap='16px'>
       <>
         {tables.map(table => (
-          <StandingsTable key={table.title} data={table.data} isLoading={isLoading} />
+          <StandingsTable key={table.title} {...table} isLoading={isLoading} />
         ))}
       </>
     </Flex>
