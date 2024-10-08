@@ -11,7 +11,7 @@ type Props = {
 
 // TODO: Fallback
 export const TeamLogo = memo(({ href, alt = 'Team Logo', size = 50 }: Props) => {
-  const { isDarkTheme } = useTheme()
+  const { isDark } = useTheme()
 
   if (!href) {
     return null
@@ -25,7 +25,7 @@ export const TeamLogo = memo(({ href, alt = 'Team Logo', size = 50 }: Props) => 
         href,
         // TODO: Почему 20?
         size: size + 20,
-        dark: isDarkTheme
+        dark: isDark
       })}
       alt={alt}
     />
