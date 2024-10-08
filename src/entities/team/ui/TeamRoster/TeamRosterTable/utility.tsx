@@ -17,6 +17,7 @@ export const getTeamRosterTableBody = (
     const { fullName, jersey, position, dateOfBirth, height, weight } = athlete
 
     return [
+      <img src={athlete.headshot.href} alt={`${fullName} headshot`} width={100} />,
       fullName,
       jersey ?? VALUE_FALLBACK,
       getAthleteDisplayPosition(position),

@@ -2,14 +2,22 @@ import { useMemo } from 'react'
 import { Table, type TableData } from '@mantine/core'
 
 import { getTeamRosterTableBody } from './utility'
-import type {TeamRoster} from '../../../model/team-roster.scheme'
+import type { TeamRoster } from '../../../model/team-roster.scheme'
 import styles from './TeamRosterTable.module.css'
 
-type Props= {
+type Props = {
   roster: TeamRoster
 }
 
-const TABLE_HEAD_COLUMNS = ['Name', 'Jersey', 'Position', 'Birthdate', 'Height', 'Weight']
+const TABLE_HEAD_COLUMNS = [
+  'Headshot',
+  'Name',
+  'Jersey',
+  'Position',
+  'Birthdate',
+  'Height',
+  'Weight'
+]
 
 export const TeamRosterTable = ({ roster }: Props) => {
   const tableData: TableData = useMemo(() => {
@@ -24,6 +32,7 @@ export const TeamRosterTable = ({ roster }: Props) => {
   return (
     <Table
       data={tableData}
+      withTableBorder
       stickyHeader
       striped
       highlightOnHover
