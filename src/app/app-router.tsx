@@ -3,6 +3,7 @@ import { HomePage } from '@/pages/home'
 import { DivisionsPage } from '@/pages/divisions'
 import { ConferencesPage } from '@/pages/conferences'
 import { TeamPage } from '@/pages/team'
+import { TeamSchedulePage } from '@/pages/team-schedule'
 import { TeamRosterPage } from '@/pages/team-roster'
 import { BaseLayout } from './layouts/BaseLayout'
 import { TeamLayout } from './layouts/TeamLayout'
@@ -32,8 +33,12 @@ export const createRouter = () =>
               path: ':teamId',
               children: [
                 {
-                  path: '',
+                  index: true,
                   element: <TeamPage />
+                },
+                {
+                  path: 'schedule',
+                  element: <TeamSchedulePage />
                 },
                 {
                   path: 'roster',
