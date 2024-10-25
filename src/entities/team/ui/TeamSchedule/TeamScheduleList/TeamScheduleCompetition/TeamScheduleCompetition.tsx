@@ -1,43 +1,31 @@
 import { memo } from 'react'
 import { Card, Flex, Text } from '@mantine/core'
 import dayjs from 'dayjs'
-import type { VirtualItem } from '@tanstack/react-virtual'
 
 import { TeamLogo } from '../TeamLogo/TeamLogo'
 import type { TeamScheduleCompetition as Competition } from '../../../../model/team-schedule.scheme'
 
 type Props = {
-  virtualItem: VirtualItem
+  order: number
   competition: Competition
 }
 
 export const TeamScheduleCompetition = memo(
-  ({ virtualItem, competition: { date, competitors } }: Props) => {
+  ({ order, competition: { date, competitors } }: Props) => {
     const competitorA = competitors[0]
     const competitorB = competitors[1]
     const teamA = competitorA.team
     const teamB = competitorB.team
 
     return (
-      <Card
-        pos='absolute'
-        top='0'
-        left='0'
-        w='100%'
-        h={virtualItem.size + 'px'}
-        radius='12px'
-        withBorder
-        style={{
-          transform: `translateY(${virtualItem.start}px)`
-        }}
-      >
+      <Card w='100%' h='160px' radius='12px' withBorder>
         <Flex pos='relative' w='100%' h='100%' justify='space-between' align='center' px='md'>
           <TeamLogo {...teamA} position='left' />
 
           <Flex align='center' mx='auto' direction='column' rowGap='6px'>
             <Flex align='center' direction='column' rowGap='4px'>
               <Text fz='20px' fw='500'>
-                № {virtualItem.index + 1}
+                № {order}
               </Text>
 
               <Text fw='500' fz='16px'>
