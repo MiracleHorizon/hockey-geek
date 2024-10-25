@@ -1,5 +1,8 @@
 .root {
-  position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  overflow: hidden;
   margin: 0;
 }
