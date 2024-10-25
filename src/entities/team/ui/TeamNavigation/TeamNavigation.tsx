@@ -1,14 +1,21 @@
-import { Flex, NavLink } from '@mantine/core'
+import { Tabs } from '@mantine/core'
 
-import { Link } from '@/shared/lib/router'
+import { useNavigate, useLocation } from '@/shared/lib/router'
 
 type Props = {
   teamId: string
 }
 
-export const TeamNavigation = ({ teamId }: Props) => (
-  <Flex align='center' w='max-content'>
-    <NavLink href={`${teamId}`} label='Schedule' component={Link} />
-    <NavLink href={`${teamId}/roster`} label='Roster' component={Link} />
-  </Flex>
-)
+export const TeamNavigation = ({ teamId }: Props) => {
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  return (
+    <Tabs value={pathname} onChange={value => navigate(`${teamId}/${value}`)}>
+      <Tabs.List>
+        <Tabs.Tab value='schedule'>Schedule</Tabs.Tab>
+        <Tabs.Tab value='roster'>Roster</Tabs.Tab>
+      </Tabs.List>
+    </Tabs>
+  )
+}

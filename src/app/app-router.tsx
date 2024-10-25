@@ -1,8 +1,8 @@
-import { createBrowserRouter } from '@/shared/lib/router'
+import { Redirect, createBrowserRouter } from '@/shared/lib/router'
 import { HomePage } from '@/pages/home'
 import { DivisionsPage } from '@/pages/divisions'
 import { ConferencesPage } from '@/pages/conferences'
-import { TeamPage } from '@/pages/team'
+import { TeamSchedulePage } from '@/pages/team-schedule'
 import { TeamRosterPage } from '@/pages/team-roster'
 import { BaseLayout } from './layouts/BaseLayout'
 import { TeamLayout } from './layouts/TeamLayout'
@@ -33,7 +33,11 @@ export const createRouter = () =>
               children: [
                 {
                   path: '',
-                  element: <TeamPage />
+                  element: <Redirect path='../schedule' options={{ relative: 'path' }} />
+                },
+                {
+                  path: 'schedule',
+                  element: <TeamSchedulePage />
                 },
                 {
                   path: 'roster',

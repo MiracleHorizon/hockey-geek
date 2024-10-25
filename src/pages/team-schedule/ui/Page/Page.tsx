@@ -9,7 +9,7 @@ import {
   useTeamScheduleQuery
 } from '@/entities/team'
 
-export const TeamPage = () => {
+export const TeamSchedulePage = () => {
   const teamId = useTeamId()
 
   const [searchParams] = useSearchParams()
