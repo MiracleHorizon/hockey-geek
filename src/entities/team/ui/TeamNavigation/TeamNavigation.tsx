@@ -11,7 +11,7 @@ export const TeamNavigation = ({ teamId }: Props) => {
   const { pathname } = useLocation()
 
   return (
-    <Tabs value={pathname} onChange={value => navigate(`${teamId}/${value}`)}>
+    <Tabs value={pathname.split('/').pop()} onChange={value => navigate(`${teamId}/${value}`)}>
       <Tabs.List>
         <Tabs.Tab value='schedule'>Schedule</Tabs.Tab>
         <Tabs.Tab value='roster'>Roster</Tabs.Tab>
